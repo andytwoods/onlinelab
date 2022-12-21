@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    
+<p>
+    <a class="btn btn-light" href="{% url 'study_Study_list' %}">
+    Study Listing
+    </a>
+</p>
+    
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.errors}}
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="status">status: </label>
+      <input class="form-control col-sm-10"
+         id="status" type="text"
+         name="status" value="{{ object.status }}">
+  </div>
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="title">title: </label>
+      <input class="form-control col-sm-10"
+         id="title" type="text"
+         name="title" value="{{ object.title }}">
+  </div>
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="software">software: </label>
+      <input class="form-control col-sm-10"
+         id="software" type="text"
+         name="software" value="{{ object.software }}">
+  </div>
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="description">description: </label>
+      <input class="form-control col-sm-10"
+         id="description" type="text"
+         name="description" value="{{ object.description }}">
+  </div>
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="uuid">uuid: </label>
+      <input class="form-control col-sm-10"
+         id="uuid" type="text"
+         name="uuid" value="{{ object.uuid }}">
+  </div>
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="researchers">researchers: </label>
+      {{ form.researchers }}
+  </div>
+  <input type="submit" value="Save" class="btn btn-primary">
+</form>
+
+{% endblock %}

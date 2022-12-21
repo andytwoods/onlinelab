@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    
+<p>
+    <a class="btn btn-light" href="{% url 'data_Result_list' %}">
+    Result Listing
+    </a>
+</p>
+    
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.errors}}
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="data">data: </label>
+      <input class="form-control col-sm-10"
+         id="data" type="text"
+         name="data" value="{{ object.data }}">
+  </div>
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="participant">participant: </label>
+      {{ form.participant }}
+  </div>
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="study">study: </label>
+      {{ form.study }}
+  </div>
+  <input type="submit" value="Save" class="btn btn-primary">
+</form>
+
+{% endblock %}
